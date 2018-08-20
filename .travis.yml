@@ -7,6 +7,10 @@ services:
 env:
   - ARCH=x86_64 DOCKER_IMAGE=quay.io/appimage/appimagebuild
   - ARCH=i686 DOCKER_IMAGE=quay.io/appimage/appimagebuild-i386
+  - ARCH=arm32v7 DOCKER_IMAGE=arm32v7/ubuntu:trusty
+  - ARCH=arm64v8 DOCKER_IMAGE=arm64v8/ubuntu:trusty
+  - ARCH=ppc64le DOCKER_IMAGE=ppc64le/ubuntu:trusty
+  - ARCH=s390x DOCKER_IMAGE=s390x/ubuntu:trusty
 
 script:
   - bash travis/travis-build.sh
