@@ -12,6 +12,8 @@ if [ "$ARCH" == "amd64" ]; then
   LIB_ARCH="x86_64-linux-gnu"
 elif [ "$ARCH" == "armhf" ]; then
   LIB_ARCH="arm-linux-gnueabihf"
+elif [ "$ARCH" == "armv7l" ]; then
+  LIB_ARCH="arm-linux-gnueabihf"
 elif [ "$ARCH" == "arm64" ]; then
   LIB_ARCH="aarch64-linux-gnu"
 else
@@ -28,8 +30,8 @@ if [ -e /usr/bin/zypper ] ; then
 fi
 
 if [ -e /usr/bin/apt-get ] ; then
-  sudo apt-get update
-  sudo apt-get -y install zsync git libarchive-dev autoconf libtool make gcc g++ libtool libfuse-dev \
+   apt-get update
+   apt-get -y install wget vim zsync git libarchive-dev autoconf libtool make gcc g++ libtool libfuse-dev \
   liblzma-dev libglib2.0-dev libssl-dev libinotifytools0-dev liblz4-dev libcairo-dev desktop-file-utils cmake
   # libtool-bin might be required in newer distributions but is not available in precise
   sudo cp resources/liblz4.pc /usr/lib/$LIB_ARCH/pkgconfig/
