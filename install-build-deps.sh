@@ -34,7 +34,7 @@ if [ -e /usr/bin/apt-get ] ; then
   #  apt-get -y install wget vim zsync git libarchive-dev autoconf libtool make gcc g++ libtool libfuse-dev \
   # liblzma-dev libglib2.0-dev libssl-dev libinotifytools0-dev liblz4-dev libcairo-dev desktop-file-utils cmake
   # libtool-bin might be required in newer distributions but is not available in precise
-   cp resources/liblz4.pc /usr/lib/$LIB_ARCH/pkgconfig/
+   cp resources/liblz4.pc usr/lib/$LIB_ARCH/pkgconfig/
   if cat /etc/lsb-release | grep 14.04 2>&1 >/dev/null; then
     export CMAKE_VERSION=3.10.0
     # sometimes, using a crowbar is easier than fiddling with PPAs
