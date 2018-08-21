@@ -8,7 +8,15 @@ ARCH=$(uname -m)
 if [ "$ARCH" == "i686" ]; then
   ARCH=i386
 fi
-
+if [ "$ARCH" == "amd64" ]; then
+  LIB_ARCH="x86_64-linux-gnu"
+elif [ "$ARCH" == "armhf" ]; then
+  LIB_ARCH="arm-linux-gnueabihf"
+elif [ "$ARCH" == "arm64" ]; then
+  LIB_ARCH="aarch64-linux-gnu"
+else
+  LIB_ARCH="$ARCH-linux-gnu"
+fi
 
 # Install dependencies for openSUSE
 if [ -e /usr/bin/zypper ] ; then
@@ -24,7 +32,7 @@ if [ -e /usr/bin/apt-get ] ; then
   sudo apt-get -y install zsync git libarchive-dev autoconf libtool make gcc g++ libtool libfuse-dev \
   liblzma-dev libglib2.0-dev libssl-dev libinotifytools0-dev liblz4-dev libcairo-dev desktop-file-utils cmake
   # libtool-bin might be required in newer distributions but is not available in precise
-  sudo cp resources/liblz4.pc /usr/lib/$ARCH-linux-gnu/pkgconfig/
+  sudo cp resources/liblz4.pc /usr/lib/$LIB_ARCH-linux-gnu/pkgconfig/
   if cat /etc/lsb-release | grep 14.04 2>&1 >/dev/null; then
     export CMAKE_VERSION=3.10.0
     # sometimes, using a crowbar is easier than fiddling with PPAs
